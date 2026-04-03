@@ -6,6 +6,34 @@
     <title>Mi Portafolio | Alexander Guzman Vasquez</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+    <!-- Modal para expandir la foto -->
+<div id="miModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-img" id="imgExpandida">
+</div>
+
+<script>
+    // Obtener elementos
+    const modal = document.getElementById('miModal');
+    const imgExpandida = document.getElementById('imgExpandida');
+    const fotos = document.querySelectorAll('.foto-perfil'); // si hay más de una foto
+    const closeBtn = document.querySelector('.close-modal');
+
+    // Añadir evento de clic a cada foto (normalmente solo una)
+    fotos.forEach(img => {
+        img.addEventListener('click', function() {
+            modal.style.display = 'flex';
+            imgExpandida.src = this.src;
+        });
+    });
+
+    // Cerrar modal al hacer clic en la X o fuera de la imagen
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal || e.target === closeBtn) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
 <body>
     <header>
         <nav>
